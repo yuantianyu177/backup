@@ -1,0 +1,29 @@
+/*外键的修改和删除规则需要设置为CASCADE*/
+
+DROP DATABASE IF EXISTS `cloud`;
+CREATE DATABASE `cloud_file` CHARSET=utf8;
+
+DROP TABLE IF EXISTS `file_content`;
+DROP TABLE IF EXISTS `file`;
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+ `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ `username` VARCHAR(255) NOT NULL,
+ `password` VARCHAR(255) NOT NULL
+)DEFAULT CHARSET=utf8;
+
+CREATE TABLE `file` (
+ `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ `backupName` VARCHAR(255) NOT NULL,
+ `date` DATETIME NOT NULL,
+ `user_id` int NOT NULL,
+ CONSTRAINT `user_id` FOREIGN KEY(user_id) REFERENCES `user`(id)
+)DEFAULT CHARSET=utf8;
+
+CREATE TABLE `file_content` (
+ `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ `content` LONGBLOB NOT NULL,
+ `file_id` int NOT NULL,
+ CONSTRAINT `file_id` FOREIGN KEY(file_id) REFERENCES file(id)
+)DEFAULT CHARSET=utf8;
