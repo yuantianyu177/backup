@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/login_background.jpeg</file>
+        <file>img/cloud.png</file>
+        <file>img/recover.png</file>
+        <file>img/task.png</file>
+        <file>img/backup.png</file>
+        <file>img/refresh.png</file>
+        <file>img/addFile.png</file>
+        <file>img/clear.png</file>
+        <file>img/delete.png</file>
+        <file>img/addFold.png</file>
+        <file>img/setting.png</file>
+        <file>img/browser.png</file>
+        <file>img/dir.png</file>
+        <file>img/start.png</file>
+        <file>img/main_background.jpeg</file>
+        <file>img/user.png</file>
+        <file>img/logo.png</file>
+        <file>img/cancel.png</file>
+        <file>img/save.png</file>
+    </qresource>
+</RCC>

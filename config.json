@@ -1,0 +1,13 @@
+[
+    {
+        "backupFileName": "A.bak",
+        "backupFilePath": "C:/Users/asus/Desktop/A.bak",
+        "files": [
+            "test"
+        ],
+        "frequency": "每天",
+        "isCloud": "是",
+        "nextTime": "周三 11月 9 15:47:04 2022",
+        "password": "123"
+    }
+]

@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>890</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>890</width>
+    <height>580</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>890</width>
+    <height>580</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>X-backup</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/img/logo.png</normaloff>:/img/logo.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#Widget
+{
+border-radius:15px;
+}</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>890</width>
+     <height>580</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>890</width>
+     <height>580</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>890</width>
+     <height>580</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QHeaderView::section
+{
+selection-background:rgb(3, 80, 136);
+background:rgb(3, 80, 136);
+border:none;
+color:white;
+font-family:century gothic;
+}
+
+QTableWidget
+{
+gridline-color:white;
+}
+#tab,#tab_2,#tab_3,#tab_4
+{
+border-image:url(:/img/main_background.jpeg)
+}
+
+#taskTableWidget,#backupFileList,#cloudFileTableWidget
+{
+color:white;
+background:rgba(0,0,0,0.1);
+}
+
+#loginPushButton
+{
+border-radius:18px;
+background:transparent;
+}
+
+#loginPushButton:hover
+{
+border-radius:18px;
+background:rgba(0,0,0,0.5);
+}
+
+#addFileButton,#addFoldButton,#deleteButton,#clearButton,#settingButton,#startButton,#addBackupFileButton,#chooseDirButton,
+#startRecoverButton,#deleteTaskButton,#clearTaskButton,#deleteCloudPushButton,#cloudDirPushButton,#cloudRecoverPushButton,
+#refreshPushButton
+{
+color:white;
+font-size:18px;
+font-weight:bold;
+font-family:century gothic;
+background:transparent;
+}
+#addFileButton:hover,#addFoldButton:hover,#deleteButton:hover,#clearButton:hover,#settingButton:hover,#startButton:hover,
+#addBackupFileButton:hover,#chooseDirButton:hover,#startRecoverButton:hover,#deleteTaskButton:hover,#clearTaskButton:hover,
+#deleteCloudPushButton:hover,#cloudDirPushButton:hover,#cloudRecoverPushButton:hover,#refreshPushButton:hover
+{
+	background:rgba(0,0,0,0.2);
+}
+#progressBar,#progressBar_2
+{
+background:rgba(0,0,0,0.1);
+text-align: center;
+border: 2px solid grey;
+border-radius: 5px;
+color:white;
+}
+
+QLineEdit#backupFileLineEdit,#desDirLineEdit,#pwdLineEdit,#chooseFileLineEdit,#dirLineEdit,#pwdLineEdit_2
+{
+	background:transparent;
+	border:none;
+	color:white;
+	border-bottom:1px solid white;
+	font-family:times new roman;
+	font-size:20px;
+	font-weight:bold;
+}
+QLabel#label,#label_2,#label_11,#label_4,#label_5,#label_6
+{
+	color:white;
+	background:transparent;
+	font-family:century gothic;
+	font-size:20px;
+	font-weight:bold;
+}
+
+</string>
+   </property>
+   <property name="currentIndex">
+    <number>3</number>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="icon">
+     <iconset resource="images.qrc">
+      <normaloff>:/img/backup.png</normaloff>:/img/backup.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>备份</string>
+    </attribute>
+    <widget class="QTableWidget" name="backupFileList">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>22</y>
+       <width>820</width>
+       <height>340</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>820</width>
+       <height>340</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>820</width>
+       <height>340</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <column>
+      <property name="text">
+       <string>文件名</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>路径</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QPushButton" name="startButton">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>445</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>开始备份</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/start.png</normaloff>:/img/start.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>47</x>
+       <y>448</y>
+       <width>651</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>380</y>
+       <width>811</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="addFileButton">
+          <property name="text">
+           <string>添加文件</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/img/addFile.png</normaloff>:/img/addFile.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="addFoldButton">
+          <property name="text">
+           <string>添加文件夹</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/img/addFold.png</normaloff>:/img/addFold.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="deleteButton">
+          <property name="text">
+           <string>删除</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="clearButton">
+          <property name="text">
+           <string>清空</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/img/clear.png</normaloff>:/img/clear.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="settingButton">
+          <property name="text">
+           <string>设置</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/img/setting.png</normaloff>:/img/setting.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="icon">
+     <iconset resource="images.qrc">
+      <normaloff>:/img/recover.png</normaloff>:/img/recover.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>恢复</string>
+    </attribute>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>51</x>
+       <y>121</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>备份名</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="backupFileLineEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>106</y>
+       <width>500</width>
+       <height>39</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addBackupFileButton">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>109</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>浏览文件</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/browser.png</normaloff>:/img/browser.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>69</x>
+       <y>184</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>恢复到</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="desDirLineEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>169</y>
+       <width>500</width>
+       <height>39</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="chooseDirButton">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>172</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>选择目录</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/dir.png</normaloff>:/img/dir.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="pwdLineEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>230</y>
+       <width>500</width>
+       <height>39</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="startRecoverButton">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>297</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>开始恢复</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/start.png</normaloff>:/img/start.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="pwdCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>76</x>
+       <y>242</y>
+       <width>21</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar_2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>300</y>
+       <width>500</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="textDirection">
+      <enum>QProgressBar::TopToBottom</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>241</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>密码</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="icon">
+     <iconset resource="images.qrc">
+      <normaloff>:/img/task.png</normaloff>:/img/task.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>我的任务</string>
+    </attribute>
+    <widget class="QTableWidget" name="taskTableWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>820</width>
+       <height>430</height>
+      </rect>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>备份名</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>备份频率</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>加密</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>本地路径</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>云备份</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>480</y>
+       <width>202</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QPushButton" name="deleteTaskButton">
+        <property name="text">
+         <string>删除</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearTaskButton">
+        <property name="text">
+         <string>清空</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/img/clear.png</normaloff>:/img/clear.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="icon">
+     <iconset resource="images.qrc">
+      <normaloff>:/img/cloud.png</normaloff>:/img/cloud.png</iconset>
+    </attribute>
+    <attribute name="title">
+     <string>我的云备份</string>
+    </attribute>
+    <widget class="QPushButton" name="refreshPushButton">
+     <property name="geometry">
+      <rect>
+       <x>26</x>
+       <y>9</y>
+       <width>81</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>刷新</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/refresh.png</normaloff>:/img/refresh.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="cloudFileTableWidget">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>51</y>
+       <width>820</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>文件名</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>日期</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>35</x>
+       <y>366</y>
+       <width>61</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>已选择</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>35</x>
+       <y>421</y>
+       <width>61</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>恢复到</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="pwdCheckBox_2">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>486</y>
+       <width>16</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="loginPushButton">
+     <property name="geometry">
+      <rect>
+       <x>805</x>
+       <y>11</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/user.png</normaloff>:/img/user.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>53</x>
+       <y>476</y>
+       <width>41</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>密码</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="pwdLineEdit_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>476</y>
+       <width>630</width>
+       <height>39</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="chooseFileLineEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>366</y>
+       <width>630</width>
+       <height>39</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cloudDirPushButton">
+     <property name="geometry">
+      <rect>
+       <x>742</x>
+       <y>421</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>选择目录</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/dir.png</normaloff>:/img/dir.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cloudRecoverPushButton">
+     <property name="geometry">
+      <rect>
+       <x>742</x>
+       <y>476</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>开始恢复</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/start.png</normaloff>:/img/start.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="deleteCloudPushButton">
+     <property name="geometry">
+      <rect>
+       <x>742</x>
+       <y>366</y>
+       <width>121</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>删除</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="dirLineEdit">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>421</y>
+       <width>630</width>
+       <height>39</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
