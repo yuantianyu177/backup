@@ -1,9 +1,11 @@
 # backup
 (UESTC) a buckup software designed by Qt 
+
 The release folder contains an executable program without any dependencies.
 
 # environment
 MySQL 8.0
+
 Qt minGW 15.2 32bit
 
 # final result
